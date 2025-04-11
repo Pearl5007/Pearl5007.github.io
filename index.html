@@ -1,80 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pearl - Tech Enthusiast</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts: Poppins -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pearl - Tech Enthusiast</title>
 
-<!-- Favicon -->
-<link rel="icon" href="https://fav.farm/💻" type="image/x-icon">
+  <!-- Fonts, Icons, and Effects -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://fav.farm/💻" type="image/x-icon">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 
-<!-- AOS: Animate On Scroll Library -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Typewriter & Particles -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fa;
+      color: #2c3e50;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero {
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 16px;
+      padding: 50px;
+      display: inline-block;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: #e0e0e0;
+    }
+
+    #darkToggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: #333;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      font-size: 1rem;
+      z-index: 10;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    section {
+      background: white;
+      padding: 40px;
+      margin: 40px 0;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+    }
+
+    section h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      border-left: 4px solid #667eea;
+      padding-left: 15px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ul li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '➤';
+      position: absolute;
+      left: 0;
+      color: #667eea;
+    }
+
+    a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: #4a63b5;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #4a63b5;
+    }
+
+    .project-card {
+      padding: 20px;
+      background: #f9f9f9;
+      border-left: 4px solid #764ba2;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      background: #1e1e1e;
+      color: #aaa;
+      padding: 30px 0;
+      font-size: 0.95rem;
+    }
+
+    /* DARK MODE */
+    body.dark-mode {
+      background: #121212;
+      color: #eee;
+    }
+
+    .dark-mode section {
+      background: #1e1e1e;
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+    }
+
+    .dark-mode header {
+      background: linear-gradient(135deg, #2b2e4a, #1a1c2c);
+    }
+
+    .dark-mode a {
+      color: #9ecbff;
+    }
+
+    .dark-mode .btn {
+      background: #9ecbff;
+      color: #222;
+    }
+
+    .dark-mode .project-card {
+      background: #2a2a2a;
+      border-color: #9ecbff;
+    }
+
+    .dark-mode footer {
+      background: #000;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 30px 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Particle Background -->
+  <div id="tsparticles"></div>
 
-    <header>
-        <div class="hero">
-            <h1>Hello, I'm Pearl 👩‍💻</h1>
-            <p>A passionate student and tech enthusiast with a love for coding and problem-solving.</p>
-        </div>
-        <button id="darkToggle" class="btn" style="position:absolute; top:20px; right:20px;">🌙 Toggle Dark Mode</button>
-    </header>
+  <header>
+    <button id="darkToggle">🌙</button>
+    <div class="hero" data-aos="zoom-in">
+      <h1><span id="typed"></span></h1>
+      <p>A passionate student and tech enthusiast with a love for coding and problem-solving.</p>
+    </div>
+  </header>
 
-    <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I'm a student exploring the world of software development, machine learning, and web development. When I'm not studying, I enjoy contributing to open-source projects, learning new technologies, and building cool projects!</p>
-        </section>
+  <main>
+    <section id="about" data-aos="fade-up">
+      <h2>About Me</h2>
+      <p>I'm a student exploring the world of software development, machine learning, and web development. I enjoy contributing to open-source projects, learning new technologies, and building cool things that make life better.</p>
+    </section>
 
-        <section id="skills">
-           
-            <h2>My Skills</h2>
-            <ul>
-                <li>Languages: Python</li>
-                <li>Web Development: HTML, CSS</li>
-                <li>Machine Learning: TensorFlow, scikit-learn</li>
-                <li>Tools: Git, GitHub, VS Code, Jupyter Notebook</li>
-            </ul>
-        </section>
-         <section id="about" data-aos="fade-up">
-    ...
-</section>
+    <section id="skills" data-aos="fade-up" data-aos-delay="100">
+      <h2>My Skills</h2>
+      <ul>
+        <li>Languages: Python</li>
+        <li>Web Development: HTML, CSS</li>
+        <li>Machine Learning: TensorFlow, scikit-learn</li>
+        <li>Tools: Git, GitHub, VS Code, Jupyter Notebook</li>
+      </ul>
+    </section>
 
-<section id="skills" data-aos="fade-up" data-aos-delay="100">
-    ...
-</section>
+    <section id="projects" data-aos="fade-up" data-aos-delay="200">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <strong>Personal Portfolio Website</strong><br/>
+        Built with HTML, CSS, and JavaScript to showcase my work.
+      </div>
+      <div class="project-card">
+        <strong>ML Model for Iris Classification</strong><br/>
+        Used scikit-learn to train and evaluate a model on the classic Iris dataset.
+      </div>
+      <div class="project-card">
+        <strong>GitHub Activity Tracker</strong><br/>
+        A Python script using GitHub's API to track contributions and trends.
+      </div>
+    </section>
 
-<section id="projects" data-aos="fade-up" data-aos-delay="200">
-    ...
-</section>
+    <section id="contact" data-aos="fade-up" data-aos-delay="300">
+      <h2>Contact</h2>
+      <p>Interested in collaborating or just saying hi? <br/>
+        <a href="mailto:pearl@example.com" class="btn">Email Me</a></p>
+    </section>
+  </main>
 
-       
-    </main>
+  <footer>
+    <p>&copy; 2025 Pearl — Built with 💙, Code & Passion</p>
+  </footer>
 
-    <footer>
-        <p>Made with ❤️ by Pearl</p>
-    </footer>
-    <!-- AOS Script -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-    <script>
-    const toggleBtn = document.getElementById('darkToggle');
-    toggleBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-    });
-</script>
+  <!-- AOS + Typewriter + Particles + Dark Toggle -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
 
-</body>
+    new Typed("#typed", {
+      strings: ["Hello, I'm Pearl 👩‍💻", "Tech Enthusiast",
 
-</html>
 
 
 
