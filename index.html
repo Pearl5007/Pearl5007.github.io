@@ -277,7 +277,41 @@
     AOS.init();
 
     new Typed("#typed", {
-      strings: ["Hello, I'm Pearl 👩‍💻", "Tech Enthusiast",
+      strings: [
+        "Hello, I'm Pearl 👩‍💻",
+        "Tech Enthusiast",
+        "Future Developer 🚀",
+        "Open-Source Lover 💡"
+      ],
+      typeSpeed: 60,
+      backSpeed: 40,
+      backDelay: 2000,
+      loop: true
+    });
+
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      particles: {
+        number: { value: 60 },
+        size: { value: 2 },
+        move: { enable: true, speed: 0.3 },
+        links: { enable: true, distance: 100, color: "#999", opacity: 0.4 },
+        opacity: { value: 0.5 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" }
+        }
+      },
+      background: {
+        color: { value: "transparent" }
+      }
+    });
+
+    document.getElementById('darkToggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
 
 
 
