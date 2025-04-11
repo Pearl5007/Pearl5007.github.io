@@ -282,7 +282,18 @@
         size: { value: 2 },
         move: { enable: true, speed: 0.3 },
         links: { enable: true, distance: 100, color: "#999", opacity: 0.4 },
-        opacity
+        opacity: { value: 0.5 }
+      }
+    });
+
+    // Dark mode toggle functionality
+    document.getElementById("darkToggle").addEventListener("click", function() {
+      document.body.classList.toggle("dark-mode");
+      this.textContent = document.body.classList.contains("dark-mode") ? "🌞" : "🌙";
+    });
+  </script>
+</body>
+</html>
 
 
 
